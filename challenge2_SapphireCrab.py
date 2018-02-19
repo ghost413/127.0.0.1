@@ -19,6 +19,11 @@ import matplotlib.pyplot as mplot
 import glob
 import re
 
+print('\n\t\tWelcome to the Script Analyzer!')
+print('\n\t Which series would you like to view?')
+print('\t\t\t\tA or B')
+userInput = input()
+
 infoA = []
 infoB = []
 wordCt = {}
@@ -27,28 +32,41 @@ mS = open('sentiment_lex.csv', 'r')
 mS = mS.read()
 mS = mS.split('\n')
 
-fileA = glob.glob('C:/Users/**/a*script.txt', recursive=True)
-fileA = re.sub(r'\W+', ' ', fileA)
-fileA = fileA.split(' ')
-fileB = glob.glob('C:/Users/**/b*script.txt', recursive=True)
-fileB = re.sub(r'\W+', ' ', fileB)
-fileB = fileB.split(' ')
+for info in mS:
+	if info[0] in infoA:
+		try:
+			wordCt[infoA] += 1
+		except:
+			wordCt[infoA] = 1
+	wordCt.values = wordCt.values * info[1]
 
-for words in fileA:
-	if not words.isalpha():
-		continue
-	if len(words) == 1:
-		continue
-	if words == words:
-		infoA.append(words)
+if userInput.upper() == 'A':
 
-for words in fileB:
-	if not words.isalpha():
-		continue
-	if len(words) == 1:
-		continue
-	if words == words:
-		infoB.append(words)
+	fileA = glob.glob('C:/Users/**/a*script.txt', recursive=True)
+	fileA = re.sub(r'\W+', ' ', fileA)
+	fileA = fileA.split(' ')
+
+	for words in fileA:
+		if not words.isalpha():
+			continue
+		if len(words) == 1:
+			continue
+		if words == words:
+			infoA.append(words)
+
+if userInput.upper() == 'B':
+
+	fileB = glob.glob('C:/Users/**/b*script.txt', recursive=True)
+	fileB = re.sub(r'\W+', ' ', fileB)
+	fileB = fileB.split(' ')
+
+	for words in fileB:
+		if not words.isalpha():
+			continue
+		if len(words) == 1:
+			continue
+		if words == words:
+			infoB.append(words)
 
 
 mplot.bar(range(0), len(wordCt.values), wordCt.valueus)
