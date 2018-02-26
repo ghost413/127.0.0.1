@@ -58,19 +58,41 @@ for files in mS:
 		line.pop()
 		for things in line:
 			things = things.split(',')
-			sentiment[things[0]] = float(things[1])
+			sentiment[things[0]] = np.float64(things[1])
 dic = {}
 
 for words in info:
-	if words in sentiment.values:
-		try:
-			dic[words] += 1
-		except:
-			dic[words] = 1
-print(dic)
+	for letters in words:
+		if letters in sentiment:
+			try:
+				dic[words] += 1
+			except:
+				dic[words] = 1
 
-mplot.bar(range(0), len(sentiment.values), sentiment.values)
-mplot.xticks(range(0), len(sentiment.keys), sentiment.keys)
+neg = 0
+wNeg = 0
+neu = 0
+wPos = 0
+pos = 0
+
+for value in dic:
+	if value in sentiment:
+		if sentiment[value] <= -0.6:
+			neg += dic[words]
+		elif sentiment[value] >= -0.6 and sentiment[value] <= -0.2:
+			wNeg += dic[words]
+		elif sentiment[value] > -0.2 and sentiment[value] < 0.2:
+			neu += dic[words]
+		elif sentiment[value] >= 0.2 and sentiment[value] < 0.6:
+			wPos += dic[words]
+		elif sentiment[value] >= 0.6:
+			pos += dic[words]
+
+final = np.log10([neg, wNeg, neu, wPos, pos])
+
+mplot.bar([0, 1, 2, 3, 4], final)
+mplot.xticks([0, 1, 2, 3, 4], ["Neg", "W.Neg", "Neu", "W.Pos", "Pos"])
 mplot.xlabel('Weekly Sentiment')
 mplot.ylabel('Weekly Word Count')
 mplot.title('CSci 343 Challenge 2: Script Sentiment')
+mplot.show()
