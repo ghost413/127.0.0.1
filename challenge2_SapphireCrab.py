@@ -3,7 +3,7 @@
 	ID: SapphireCrab
 	Email: jjshaver@go.olemiss.edu
 	Program Source File Name: main.py
-	Last Edit Date: Sunday 23 February 2018
+	Last Edit Date: Friday 23 February 2018
 	Course Information: CSci 343
 	Program Description:
 	Sources Consulted:
@@ -19,58 +19,58 @@ import matplotlib.pyplot as mplot
 import glob
 import re
 
+
 print('\n\t\tWelcome to the Script Analyzer!')
 print('\n\t Which series would you like to view?')
 print('\t\t\t\tA or B')
 userInput = input()
 
-infoA = []
-infoB = []
-wordCt = {}
-
-mS = open('sentiment_lex.csv', 'r')
-mS = mS.read()
-mS = mS.split('\n')
-
-for info in mS:
-	if info[0] in infoA:
-		try:
-			wordCt[infoA] += 1
-		except:
-			wordCt[infoA] = 1
-	wordCt.values = wordCt.values * info[1]
+info = []
 
 if userInput.upper() == 'A':
 
-	fileA = glob.glob('C:/Users/**/a*script.txt', recursive=True)
-	fileA = re.sub(r'\W+', ' ', fileA)
-	fileA = fileA.split(' ')
+	fileListA = glob.glob('C:/Users/**/a*script.txt', recursive=True)
 
-	for words in fileA:
-		if not words.isalpha():
-			continue
-		if len(words) == 1:
-			continue
-		if words == words:
-			infoA.append(words)
+	for files in fileListA:
+		line = open(files, 'r')
+		line = line.read()
+		line = re.sub(r'\W+', ' ', line)
+		line = line.split(' ')
+		info.append(line)
 
 if userInput.upper() == 'B':
 
-	fileB = glob.glob('C:/Users/**/b*script.txt', recursive=True)
-	fileB = re.sub(r'\W+', ' ', fileB)
-	fileB = fileB.split(' ')
+	fileListB = glob.glob('C:/Users/**/b*script.txt', recursive=True)
 
-	for words in fileB:
-		if not words.isalpha():
-			continue
-		if len(words) == 1:
-			continue
-		if words == words:
-			infoB.append(words)
+	for files in fileListB:
+		line = open(files, 'r')
+		line = re.sub(r'W+', ' ', line)
+		line = line.split(' ')
+		info.append(line)
 
+sentiment = {}
+mS = glob.glob('C:/Users/**/sentiment_lex.csv', recursive=True)
+for files in mS:
+	line = open(files, 'r')
+	line = line.read()
+	line = line.split('\n')
+	if(line[-1] == ''):
+		line.pop()
+		for things in line:
+			things = things.split(',')
+			sentiment[things[0]] = float(things[1])
+dic = {}
 
-mplot.bar(range(0), len(wordCt.values), wordCt.valueus)
-mplot.xticks(range(0), len(wordCt.keys), wordCt.keys)
+for words in info:
+	if words in sentiment.values:
+		try:
+			dic[words] += 1
+		except:
+			dic[words] = 1
+print(dic)
+
+mplot.bar(range(0), len(sentiment.values), sentiment.values)
+mplot.xticks(range(0), len(sentiment.keys), sentiment.keys)
 mplot.xlabel('Weekly Sentiment')
 mplot.ylabel('Weekly Word Count')
 mplot.title('CSci 343 Challenge 2: Script Sentiment')
