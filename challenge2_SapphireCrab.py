@@ -44,7 +44,8 @@ if userInput.upper() == 'B':
 
 	for files in fileListB:
 		line = open(files, 'r')
-		line = re.sub(r'W+', ' ', line)
+		line = line.read()
+		line = re.sub(r'\W+', ' ', line)
 		line = line.split(' ')
 		info.append(line)
 
@@ -56,18 +57,20 @@ for files in mS:
 	line = line.split('\n')
 	if(line[-1] == ''):
 		line.pop()
-		for things in line:
-			things = things.split(',')
-			sentiment[things[0]] = np.float64(things[1])
+	if(line[-1] == ''):
+		line.pop()
+	for things in line:
+		things = things.split(',')
+		sentiment[things[0]] = np.float64(things[1])
+
 dic = {}
 
 for words in info:
 	for letters in words:
-		if letters in sentiment:
-			try:
-				dic[words] += 1
-			except:
-				dic[words] = 1
+		try:
+			dic[letters] += 1
+		except:
+			dic[letters] = 1
 
 neg = 0
 wNeg = 0
@@ -78,15 +81,15 @@ pos = 0
 for value in dic:
 	if value in sentiment:
 		if sentiment[value] <= -0.6:
-			neg += dic[words]
+			neg += dic[value]
 		elif sentiment[value] >= -0.6 and sentiment[value] <= -0.2:
-			wNeg += dic[words]
+			wNeg += dic[value]
 		elif sentiment[value] > -0.2 and sentiment[value] < 0.2:
-			neu += dic[words]
+			neu += dic[value]
 		elif sentiment[value] >= 0.2 and sentiment[value] < 0.6:
-			wPos += dic[words]
+			wPos += dic[value]
 		elif sentiment[value] >= 0.6:
-			pos += dic[words]
+			pos += dic[value]
 
 final = np.log10([neg, wNeg, neu, wPos, pos])
 
