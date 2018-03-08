@@ -13,6 +13,7 @@
 	received assistance on this programming assignment. This assignment
 	represents my individual, original effort.
 		...My Signature is on File.
+	'Lasciate ogne speranza, voi ch'intrate'
 '''
 import numpy as np
 import matplotlib.pyplot as mplot

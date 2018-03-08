@@ -23,7 +23,7 @@ class FileServer {
 			serverSocket.receive(receivePacket);
 			
 			// read file name from received datagram
-			fileName = new String(receivedPacket.getData(), 0, receivedPacket.getLength());
+			fileName = new String(receivePacket.getData(), 0, receivePacket.getLength());
 
 			
 			try {
@@ -46,7 +46,7 @@ class FileServer {
 				serverSocket.receive(receivePacket);
 				
 				// read "line:"+line from received datagram
-				lineFromClient = new String(receivedPacket.getData(), 0, receivePacket.getLength());
+				lineFromClient = new String(receivePacket.getData(), 0, receivePacket.getLength());
 
 				
 				if (lineFromClient.equals("done")) break;

@@ -55,7 +55,7 @@ class FileClient {
 		while((lineInFile = inFromFile.readLine()) != null) {
 			// create datagram for "line:"+line+"\r\n" with data-to-send, length, IP address and
 			// port number 
-			sendData = ("line: " + lineInFile + "\r\n").getBytes();
+			sendData = ("line:" + lineInFile + "\r\n").getBytes();
 			sendPacket = new DatagramPacket(sendData, sendData.length, IPAddress, 7890);
 
 			

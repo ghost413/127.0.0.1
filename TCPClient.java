@@ -44,13 +44,13 @@ class FileClient {
 		}
 		
 		// send file name+"\n" to server
-		clientSocket.writeBytes();
+		outToServer.writeBytes(fileName + '\n');
 
 
 		
 		// read line from file and write "line:"+line+"\n" to server until file end
 		while((lineInFile = inFromFile.readLine()) != null) {
-			outToServer.writeBytes("line: " + lineInFile + "\n");
+			outToServer.writeBytes("line: " + lineInFile + "\r\n");
 
 
 		}
