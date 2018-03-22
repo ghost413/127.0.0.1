@@ -3,7 +3,7 @@
 	ID: SapphireCrab
 	Email: jjshaver@go.olemiss.edu
 	Program Source File Name: SapphireCrab.py
-	Last Edit Date:
+	Last Edit Date: 9 March 2018
 	Course Information: CSci 343
 	Program Description:
 	Sources Consulted:
@@ -36,14 +36,23 @@ for jpg in file:
 
 avgImg = images[0]
 
+stdD = [0, 0, 0]
+
 for i in range(1, len(images)):
 	avgImg += images[i]
 
 avgImg /= len(images)
 
+for i in range(0, len(images)):
+	stdD += (images[i] - avgImg)**2
+
+stdD /= (len(images) - 1)
+
+stdD = np.sqrt(stdD)
+
 for row in range(0, len(avgImg)):
 	for col in range(0, len(avgImg[row])):
-		if (np.std(avgImg[row][col]) < userInput):
+		if (stdD[row][col] > userInput).any():
 			avgImg[row][col] = [255, 0, 0]
 
 avgImg = np.clip(avgImg, 0, 255)
