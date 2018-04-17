@@ -13,7 +13,9 @@
 	received assistance on this programming assignment. This assignment
 	represents my individual, original effort.
 		...My Signature is on File.
-	'Lasciate ogne speranza, voi ch'intrate'
+
+			'Was wir für uns selbst tun, stirbt mit uns.
+	Was wir für andere und die Welt tun, bleibt und ist unsterblich.'
 '''
 
 import numpy as np
