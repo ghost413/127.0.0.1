@@ -72,7 +72,7 @@ for words in info:
 	for letters in words:
 		try:
 			dic[letters] += 1
-		except:
+		except ValueError:
 			dic[letters] = 1
 
 neg = 0
