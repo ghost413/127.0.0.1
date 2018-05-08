@@ -24,10 +24,10 @@ class AStar(object):
 		self.gridWidth = 5
 
 	def initGrid(self, width, height, walls, start, end):
-		self.grid_height = height
-		self.grid_width = width
-		for x in range(self.grid_width):
-			for y in range(self.grid_height):
+		self.gridHeight = height
+		self.gridWidth = width
+		for x in range(self.gridWidth):
+			for y in range(self.gridHeight):
 				if (x, y) in walls:
 					reachable = False
 				else:
