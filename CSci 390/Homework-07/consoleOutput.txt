@@ -1,0 +1,4 @@
+Gauss' Formula: 45
+Do-While Loop: 45
+For-Loop: 45
+While-Loop: 45

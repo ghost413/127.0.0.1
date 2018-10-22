@@ -1,0 +1,14 @@
+
+#include <cxxabi.h>
+#include <string>
+#include <typeinfo>
+
+std::string DemangleName(const char *Name);
+
+#define DUMPTYPE(Symbol) "Type: " << DemangleName(typeid(Symbol).name()) <<   ", Length: " << sizeof(Symbol)
+
+#define DUMPVAR(Symbol) "Variable: " << #Symbol <<  ", " DUMPTYPE(Symbol) << ", Address: " <<   ((void *) &(Symbol)) << ", Value: " << (Symbol)
+
+#define DUMPVAL(Symbol) "Expression: " << #Symbol <<  ", " DUMPTYPE(Symbol) << ", Value: " << (Symbol)
+
+#define DUMPOBJ(Symbol) "Object: " << #Symbol << ", " DUMPTYPE(Symbol) << ", Address: " << ((void *) &(Symbol)) << ", Value: " << (Symbol)

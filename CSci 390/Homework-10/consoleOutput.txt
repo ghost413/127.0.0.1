@@ -1,0 +1,5 @@
+gcc version 4.6.3
+   
+sThing: 45689, 10.1
+~thing(void)
+   

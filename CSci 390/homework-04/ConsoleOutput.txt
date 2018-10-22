@@ -1,0 +1,47 @@
+Error 1:
+exit status 1
+function.cpp:3:1: error: expected initializer before 'void'
+ void *Msg(const char *&Message)
+ ^~~~
+
+Solved by including cxxabi.h and string
+Also had to but a ; after the void Msg
+
+Error 2:
+exit status 1
+function.cpp: In function 'void* Msg(const char*&)':
+function.cpp:6:8: error: 'cout' is not a member of 'std'
+   std::cout << Message << std::endl;
+        ^~~~
+
+Solved by including iostream 
+
+Error 3:
+function.cpp: In function 'void* Msg(const char*&)':
+function.cpp:8:3: error: return-statement with no value, in function returning 'void*' [-fpermissive]
+   return;
+   ^~~~~~
+
+Solved by returning 0.
+
+Error 4:
+main.cpp:1:10: error: #include expects "FILENAME" or <FILENAME>
+ #include “function.h”
+          ^
+
+Solved by include "function.h"
+
+Error 5:
+main.cpp:5:7: warning: missing terminating " character
+   Msg("Hello)
+       ^
+
+Fixed by completing quotes and a ; at the end
+
+Error 6:
+/tmp/ccEZMrTR.o: In function `main':
+main.cpp:(.text+0xa): undefined reference to `Msg(char const*)'
+main.cpp:(.text+0x14): undefined reference to `Msg(char const*)'
+collect2: error: ld returned 1 exit status
+
+Unsolved

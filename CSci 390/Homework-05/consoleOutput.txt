@@ -1,0 +1,5 @@
+hypotenuse<>(3.0f, 4.0f): 5
+Expression: RV1, Type: float, Length: 4, Value: 5
+hypotenuse<>(1.0, 1.0): 1.41421
+Expression: RV2, Type: double, Length: 8, Value: 1.41421
+   

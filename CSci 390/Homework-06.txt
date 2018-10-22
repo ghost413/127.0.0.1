@@ -1,0 +1,14 @@
+1.	Which is faster: x * x or std::pow(x,2)?
+	Both x*x and std::pow(x, 2) are equally as fast at compile time however x*x is more concise.
+
+2.	Which is faster std::sqrt(x) or std::pow(x, 0.5)?
+	std::sqrt(x) is 10 times faster than std::pow(x, 0.5)
+
+3.	What is the fastest way to compute the hypotenuse?
+	hypot(x, y) from math.h
+
+4.	What is the fastest way to compute xy?
+	x * y probably
+
+5.	What is the best way to approximate (x – 1)!, where x is arbitrary?  Hint: It does not involve a loop of recursive function, and is in cmath.
+	scalbn(n - 1)

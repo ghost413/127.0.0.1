@@ -1,0 +1,6 @@
+gcc version 4.6.3
+   
+Variable: myYear, Type: int, Length: 4, Address: 0x6020c0, Value: 4
+Variable: pMyYear, Type: int*, Length: 8, Address: 0x7ffd004c0388, Value: 0x6020c0
+Variable: myYear, Type: int, Length: 4, Address: 0x6020c0, Value: 1
+   
