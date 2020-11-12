@@ -17,8 +17,9 @@
 	Was wir für andere und die Welt tun, bleibt und ist unsterblich.'
 '''
 
-import torch, open3d as o3d, matplotlib.pyplot as plt
+import torch, open3d as o3d, matplotlib.pyplot as plt, random, math, numpy as np
 from torchvision import transforms, datasets
+from path import Path 
 
 # mesh = o3d.io.read_triangle_mesh("F:/3D Printer Files/PyTorchFiles/Yorik_skull.stl")
 # pointCloud = mesh.sample_points_poisson_disk(100000)
