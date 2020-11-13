@@ -51,7 +51,7 @@ class ZipDownloader():
 			print("Something Else Went Wrong", err)
 			raise err
 
-class cleanFiles():
+class cleanFiles(): 
 
 	def extractFile(self, zPath, zCount):
 		path = zPath
